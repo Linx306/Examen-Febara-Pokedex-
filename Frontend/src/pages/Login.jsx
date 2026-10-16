@@ -21,10 +21,8 @@ export default function Login() {
         alert('¡Registro exitoso! Ahora puedes iniciar sesión.');
         setIsRegistering(false);
       } else {
-        // Guardamos el token en localStorage
         localStorage.setItem('token', response.data.token);
         
-        // Forzamos recarga para que App.jsx detecte el token y renderice el Dashboard
         window.location.href = '/dashboard';
       }
     } catch (err) {
@@ -35,7 +33,7 @@ export default function Login() {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f0f2f5' }}>
       <div style={{ background: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', width: '350px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>{isRegistering ? 'Registro PokéDex' : 'Iniciar Sesión'}</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: '20px', color: 'rgb(2, 2, 2)' }}>{isRegistering ? 'Registro' : 'Iniciar Sesión'}</h2>
         
         {error && <p style={{ color: 'red', fontSize: '14px', marginBottom: '10px' }}>{error}</p>}
         

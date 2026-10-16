@@ -66,7 +66,7 @@ export default function Dashboard() {
   };
 
   // 4. Guardar equipo completo en el backend (MySQL)
-  const saveTeamToCloud = async () => {
+  const saveTeam = async () => {
     try {
       await api.post('/team', { pokemons: team });
       alert('¡Equipo guardado exitosamente en la base de datos!');
@@ -83,13 +83,12 @@ export default function Dashboard() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif', maxWidth: '900px', margin: '0 auto' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #ccc', paddingBottom: '10px' }}>
-        <h2>PokéDex Manager - Tu Equipo ({team.length}/6)</h2>
+        <h2>Pokedex Manager ({team.length}/6)</h2>
         <button onClick={handleLogout} style={{ padding: '8px 15px', background: '#dc3545', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
           Cerrar Sesión
         </button>
       </header>
 
-      {/* Sección del Equipo Actual */}
       <section style={{ margin: '20px 0' }}>
         <h3>Mi Equipo Actual</h3>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', minHeight: '120px', background: '#e9ecef', padding: '15px', borderRadius: '8px' }}>
@@ -108,8 +107,8 @@ export default function Dashboard() {
           )}
         </div>
         {team.length > 0 && (
-          <button onClick={saveTeamToCloud} style={{ marginTop: '10px', padding: '10px 20px', background: '#28a745', color: 'white', border: 'none', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' }}>
-            Guardar Equipo en la Nube
+          <button onClick={saveTeam} style={{ marginTop: '10px', padding: '10px 20px', background: '#28a745', color: 'white', border: 'none', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' }}>
+            Guardar Equipo
           </button>
         )}
       </section>
